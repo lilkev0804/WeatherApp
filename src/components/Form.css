@@ -1,14 +1,21 @@
 .Form_container{
     position: absolute;
-    right:0;
-    width: 400px;
+    left: 50%;
+    top: 50%;
+    transform:  translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
-    z-index: 8;
-    background-color: black;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.137);
     color: white;
+    padding-bottom: 10px;
+}
+.Form_element{
+    display: flex;
+    flex-direction: column;
 }
 .input{
     width: 100%;
@@ -17,4 +24,19 @@
     justify-content: center;
     align-items: center;
 }
-
+.Form_title{
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.Form_input{
+    border: none;
+    text-align: center;
+    padding: 10px 0px;
+    color: black;
+    margin: 10px 0px;
+}
+.Form_input:focus{
+    outline: none;
+    border: none;
+}
