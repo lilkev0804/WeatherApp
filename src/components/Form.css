@@ -1,9 +1,5 @@
 .Form_container{
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform:  translate(-50%, -50%);
-    max-width: 400px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -11,13 +7,16 @@
     z-index: 100;
     background-color: rgba(0, 0, 0, 0.137);
     color: white;
-    padding-bottom: 10px;
+    height: 100vh;
 }
 .Form_element{
     display: flex;
     flex-direction: column;
 }
 .input{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     width: 100%;
     display: flex;
     flex-direction: column;
