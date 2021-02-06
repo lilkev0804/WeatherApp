@@ -14,17 +14,23 @@ const Form = () => {
     const [bg, setBg] = useState('')
     const [lang, setLang] = useState('')
     const [hours, setHours] = useState('')
+    const [lat, setLat] = useState('')
+    const [long, setLong] = useState('')
+    const [sunAndRise , setsunAndRise] = useState('')
 
     const search = async () => {
             const data = await fechtWeather(query, lang)
             const hour = await axios.get(`http://worldtimeapi.org/api/ip`)
-            console.log(hour.data.datetime)
-            setHours(hour.data.datetime.substring(11, hour.data.datetime.length-16))
+            setHours(hour.data.datetime.substring(11, hour.data.datetime.length-16).replace(':' , "h"))
             setWeather(data)
+            setLong(data.coord.lon)
+            setLat(data.coord.lat)
             setQuery('')
             setLang('')
             setImg(data.weather[0].icon)
             setBg(data.weather[0].icon)
+            const sunsetSunrise = await axios.get(`https://api.sunrise-sunset.org/json?lat=${lat}&lng=${long}`)
+            setsunAndRise(sunsetSunrise.data.results)
     }
 
     
@@ -102,6 +108,10 @@ const Form = () => {
 
 
                 </div>
+            <div>
+                
+            </div>
+
             </div >
              {weather.main && (
                  <InfoWeather 
@@ -115,6 +125,8 @@ const Form = () => {
                     img = {img}
                     pressure = {weather.main.pressure}
                     wind ={weather.wind.speed}
+                    sunrise = {sunAndRise.sunrise}
+                    sunset = {sunAndRise.sunset}
                  ></InfoWeather>
              )}
         </div>

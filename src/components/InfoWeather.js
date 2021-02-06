@@ -35,6 +35,7 @@ const InfoSup = styled.div`
     position: absolute;
     bottom:0;
     background-color: rgba(0, 0, 0, 0.537);
+    flex-wrap: wrap;
     
 `
 const InfoSupBox = styled.div`
@@ -42,6 +43,8 @@ const InfoSupBox = styled.div`
     flex-direction:column;
     align-items: center;
     justify-content: space-between;
+    width: 150px;
+    text-align : center;
 `
 const ActualTemp = styled.p`
     color: white;
@@ -73,13 +76,13 @@ function InfoWeather(props) {
         },
         {
             name : "Humidité",
-            img :'img/snow.svg',
+            img :'img/humidity.svg',
             indicator : "%",
             value :`${props.humidity}`
         },
         {
             name : "Pression Atmospherique",
-            img :'img/hot.svg',
+            img :'img/pressure.svg',
             indicator : "HPA",
             value :`${props.pressure}`
         },
@@ -89,15 +92,27 @@ function InfoWeather(props) {
             indicator : "km / h",
             value :`${props.wind}`
         },
+        {
+            name : "Lever",
+            img :'img/sunrise.svg',
+            indicator : "AM",
+            value :`${props.sunrise}`
+        },
+        {
+            name : "Coucher",
+            img :'img/sunset.svg',
+            indicator : "PM",
+            value :`${props.sunset}`
+        }
     ] 
     return (
         <InfoElement>
             <Infoelementtitle>
              <div>
-                {props.city}
-                <Img src={`img/${props.img}.svg`}></Img> 
-                <Hours>{props.hours}</Hours>
+                {props.city} - 
+                <Hours> {props.hours}</Hours>
              </div>
+             <Img src={`img/${props.img}.svg`}></Img> 
              <ActualTemp>{props.temp} °C</ActualTemp>
              </Infoelementtitle>
             
@@ -115,12 +130,3 @@ function InfoWeather(props) {
 }
 
 export default InfoWeather
-
-
-{/* <p><LineItems>Température</LineItems> : {props.temp} °C</p>
-<p><LineItems>Ressenti</LineItems> : {props.ressenti} °C</p>
-<p><img src="img/cold.svg"></img><LineItems>Température Min</LineItems> : {props.tempmin} °C</p>
-<p><LineItems>Température Max</LineItems> : {props.tempmax} °C</p>
-<p><LineItems>Taux d'humidité </LineItems>: {props.humidity} %</p>
-<p><LineItems>Pression</LineItems> : {props.pressure} HPA </p>
-<p><LineItems>Vitesse du vent</LineItems> : {props.wind} km / h</p> */}
