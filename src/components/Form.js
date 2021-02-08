@@ -21,7 +21,7 @@ const Form = () => {
 
     const search = async () => {
             const data = await fechtWeather(query, lang)
-            const hour = await axios.get(`http://worldtimeapi.org/api/ip`)
+            const hour = await axios.get(`https://worldtimeapi.org/api/ip`)
             setHours(hour.data.datetime.substring(11, hour.data.datetime.length-16).replace(':' , "h"))
             setWeather(data)
             setQuery('')
