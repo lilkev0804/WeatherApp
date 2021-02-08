@@ -1,41 +1,43 @@
-.Form_container{
-    position: absolute;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 100;
-    background-color: rgba(0, 0, 0, 0.137);
-    color: white;
-    height: 100vh;
-}
-.Form_element{
-    display: flex;
-    flex-direction: column;
-}
-.input{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
+.Form{
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    width: 100%;
+    padding-top: 10px;
 }
-.Form_title{
-    font-size: 1rem;
+.Form p {
+    color: #fff;
+    text-shadow : 1px 1px black;
     text-transform: uppercase;
-    font-weight: 600;
+    letter-spacing: 2px;
+    font-weight: 800;
 }
-.Form_input{
-    border: none;
-    text-align: center;
-    padding: 10px 0px;
+.FormInput{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.inputCity, .inputCountry{
+    margin: 3px 0;
+    background-color: transparent;
     color: black;
-    margin: 10px 0px;
+    border: 1px solid white;
+    padding: 5px 4px;
+    border-radius: 10px;
 }
-.Form_input:focus{
+input:focus , button:focus{
     outline: none;
-    border: none;
+}
+.btnLaunch{
+    border: 1px solid white;
+    background-color: white;
+    cursor: pointer;
+    margin-top: 4px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
 }
