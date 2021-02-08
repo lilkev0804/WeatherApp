@@ -31,7 +31,6 @@ const Form = () => {
             setBg(data.weather[0].icon)
     }
 
-    console.log(query)
     
     const changeBackgound = () => {
         if(bg.includes('04')){
