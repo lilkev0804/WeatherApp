@@ -5,7 +5,6 @@ import InfoWeather from './InfoWeather'
 import InfoWeatherDay from './InfoWeatherDay'
 import GeneralInformation from './GeneralInfo'
 import styled from 'styled-components'
-import axios from 'axios'
 
 import'./Form.css'
 
