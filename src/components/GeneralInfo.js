@@ -38,7 +38,7 @@ const CityHours = styled.div`
     return (
         <Infoelementtitle>
                 <CityHours>
-                    <City> {props.city} - </City> <Hours> {props.hours}</Hours>
+                    <City> {props.city}  </City> <Hours> {props.hours}</Hours>
                 </CityHours>
                 <Img src={`img/${props.img}.svg`}></Img> 
                 <ActualTemp>{props.temp} °C</ActualTemp>

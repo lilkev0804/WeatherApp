@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
+import {fechtWeatherSpe} from '../apisuper'
 import {fechtWeather} from '../api'
 import InfoWeather from './InfoWeather'
+import InfoWeatherDay from './InfoWeatherDay'
 import GeneralInformation from './GeneralInfo'
 import styled from 'styled-components'
 import axios from 'axios'
@@ -11,27 +13,33 @@ import'./Form.css'
 
 const Form = () => {
     const [query, setQuery] = useState('')
-    const [weather, setWeather] = useState('')
+    const [lang, setLang] = useState('')
+    const [generalWeather, setGeneralWeather] = useState('')
+    const [weatherDay, setWeatherDay] = useState("")
+    // const [weather, setWeather] = useState('')
     const [img, setImg] = useState('')
     const [bg, setBg] = useState('')
-    const [lang, setLang] = useState('')
-    const [hours, setHours] = useState('')
+    const [lat, setLat] = useState('')
+    const [long, setLong] =useState('')
     const [instruction, setInstruction] = useState('Choisissez votre ville')
+    
 
 
     const search = async () => {
             const data = await fechtWeather(query, lang)
-            const hour = await axios.get(`https://worldtimeapi.org/api/ip`)
-            setHours(hour.data.datetime.substring(11, hour.data.datetime.length-16).replace(':' , "h"))
-            setWeather(data)
-            setQuery('')
+            setLat(data.coord.lat)
+            setLong(data.coord.lon)
+            const dataS = await fechtWeatherSpe(lat, long)
+            setGeneralWeather(dataS)
+            setWeatherDay(dataS.daily)
+            console.log(dataS.daily)
+            setImg(dataS.current.weather[0].icon)
+            setBg(dataS.current.weather[0].icon)
+            setQuery(query)
             setLang('')
-            setInstruction('Une nouvelle recherche ? ')
-            setImg(data.weather[0].icon)
-            setBg(data.weather[0].icon)
+            setInstruction('Une nouvelle recherche ? ') 
     }
 
-    
     const changeBackgound = () => {
         if(bg.includes('04')){
             if(bg.includes('d')){
@@ -110,10 +118,6 @@ const Form = () => {
         flex-direction: column;
         justify-content: space-between;
    `
-
-
-
-
     return (
         
         <>
@@ -142,30 +146,61 @@ const Form = () => {
             </div >
         <Back>  
             
-            {weather.main && (
+            {generalWeather && (
                     <GeneralInformation 
-                    city= {weather.name}
-                    hours = {hours}
+                    city= {query}
                     img = {img}
-                    temp ={weather.main.temp}
+                    temp ={generalWeather.current.temp}
                     ></GeneralInformation>
-            )}
+            )} 
             
-            {weather.main && (
+            {generalWeather && (
                     <InfoWeather 
-                        hours = {hours}
-                        city= {weather.name}
-                        temp ={weather.main.temp}
-                        ressenti ={weather.main.feels_like}
-                        humidity ={weather.main.humidity}
-                        tempmin ={weather.main.temp_min}
-                        tempmax ={weather.main.temp_max}
+                        city= {query}
+                        ressenti ={generalWeather.current.feels_like}
+                        humidity ={generalWeather.daily[0].humidity}
+                        tempmin ={generalWeather.daily[0].temp.min}
+                        tempmax ={generalWeather.daily[0].temp.max}
                         img = {img}
-                        pressure = {weather.main.pressure}
-                        wind ={weather.wind.speed}
+                        pressure = {generalWeather.current.pressure}
+                        wind ={generalWeather.current.wind_speed}
                     ></InfoWeather>
-                )}
+            )}
+            {weatherDay && (
+                <InfoWeatherDay
+                    dayOneImg ={weatherDay[1].weather[0].icon}
+                    dayOneTemp= {weatherDay[1].temp.day}
+                    dayOneMin ={weatherDay[1].temp.min}
+                    dayOneMax={weatherDay[1].temp.max}
+                    dayTwoImg ={weatherDay[2].weather[0].icon}
+                    dayTwoTemp= {weatherDay[2].temp.day}
+                    dayTwoMin ={weatherDay[2].temp.min}
+                    dayTwoMax={weatherDay[2].temp.max}
+                    dayThreeImg ={weatherDay[3].weather[0].icon}
+                    dayThreeTemp= {weatherDay[3].temp.day}
+                    dayThreeMin ={weatherDay[3].temp.min}
+                    dayThreeMax={weatherDay[3].temp.max}
+                    dayFourImg ={weatherDay[4].weather[0].icon}
+                    dayFourTemp= {weatherDay[4].temp.day}
+                    dayFourMin ={weatherDay[4].temp.min}
+                    dayFourMax={weatherDay[4].temp.max}
+                    dayFiveImg ={weatherDay[5].weather[0].icon}
+                    dayFiveTemp= {weatherDay[5].temp.day}
+                    dayFiveMin ={weatherDay[5].temp.min}
+                    dayFiveMax={weatherDay[5].temp.max}
+                    daySixImg ={weatherDay[6].weather[0].icon}
+                    daySixTemp= {weatherDay[6].temp.day}
+                    daySixMin ={weatherDay[6].temp.min}
+                    daySixMax={weatherDay[6].temp.max}
+                    daySevenImg ={weatherDay[7].weather[0].icon}
+                    daySevenTemp= {weatherDay[7].temp.day}
+                    daySevenMin ={weatherDay[7].temp.min}
+                    daySevenMax={weatherDay[7].temp.max}
+                ></InfoWeatherDay>
+            )}
+              
         </Back>
+        
         </>
     )
 }
