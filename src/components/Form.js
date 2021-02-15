@@ -115,8 +115,12 @@ const Form = () => {
         position:absolute;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-   `
+        justify-content:space-between;
+`
+    const ContainerWeather = styled.div`
+        background-color: black;
+    `
+
     return (
         
         <>
@@ -153,6 +157,7 @@ const Form = () => {
                     ></GeneralInformation>
             )} 
             
+            <ContainerWeather>
             {generalWeather && (
                     <InfoWeather 
                         city= {query}
@@ -197,7 +202,7 @@ const Form = () => {
                     daySevenMax={weatherDay[7].temp.max}
                 ></InfoWeatherDay>
             )}
-              
+            </ContainerWeather>
         </Back>
         
         </>

@@ -9,11 +9,11 @@ export default function InfoWeatherDay(props) {
         display: flex;
         flex-wrap: wrap;
         align-item:center;
-        justify-content: center;
+        justify-content: space-around;
+        margin-top: 10px;
     `
     const BoxPerDay = styled.div`
         width: 200px;
-        border: 1px solid white;
         display: flex;
         flex-direction: column;
         align-items:center;
