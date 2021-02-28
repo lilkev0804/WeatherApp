@@ -5,26 +5,40 @@ export default function InfoWeatherDay(props) {
 
     const GeneralDayWeather = styled.div`
         widh:100%;
-        background-color: black;
-        display: flex;
+        background-color: rgba(0, 0, 0, 0.2); 
+        display: ${props.toggle ? "flex" : 'none'};
         flex-wrap: wrap;
         align-item:center;
         justify-content: space-around;
         margin-top: 10px;
+        position: relative;
+        padding-top: 4rem;
     `
     const BoxPerDay = styled.div`
         width: 200px;
         display: flex;
         flex-direction: column;
-        align-items:center;
-        background-color: black;
+        align-items:center; 
         color:white;
     `
-
+    const TitleSection = styled.h3`
+        color: white;
+        position:absolute;
+        top:0px;
+    `
+    const ButtonClose = styled.img`
+        position: absolute;
+        right:2px;
+        top: 1rem;
+        width: 20px;
+        height:20px;
+    `
 
 
     return (
         <GeneralDayWeather>
+            <TitleSection>Prévision sur 7 jours </TitleSection>
+            <ButtonClose onClick={props.close} src="img/cancel.svg"></ButtonClose>
                  <BoxPerDay >
                      <p>J+1</p>
                      <img src={`img/${props.dayOneImg}.svg`} alt="img meteo"></img>

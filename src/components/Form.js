@@ -20,23 +20,30 @@ const Form = () => {
     const [bg, setBg] = useState('')
     const [lat, setLat] = useState('')
     const [long, setLong] =useState('')
+    const [toggle, setToggle] = useState(false)
     const [instruction, setInstruction] = useState('Choisissez votre ville')
     
-
+    const BlockForm = document.querySelector('.Form')
 
     const search = async () => {
+
             const data = await fechtWeather(query, lang)
             setLat(data.coord.lat)
             setLong(data.coord.lon)
             const dataS = await fechtWeatherSpe(lat, long)
             setGeneralWeather(dataS)
             setWeatherDay(dataS.daily)
-            console.log(dataS.daily)
             setImg(dataS.current.weather[0].icon)
             setBg(dataS.current.weather[0].icon)
             setQuery(query)
             setLang('')
             setInstruction('Une nouvelle recherche ? ') 
+            if(window.innerWidth < 918){
+                BlockForm.style.top = "0%"
+                BlockForm.style.transform = 'translateY(0)'
+            }
+            
+
     }
 
     const changeBackgound = () => {
@@ -103,6 +110,15 @@ const Form = () => {
             return lambda
         }
     }
+    const handleChange = () => {
+        setToggle(!toggle)
+         BlockForm.style.top = "0px"
+            BlockForm.style.transform = "translateY(0px)"
+    }
+    const closer = () => {
+        setToggle(!toggle)
+    }
+
     
    const Back = styled.div`
         width:100%;
@@ -118,11 +134,10 @@ const Form = () => {
         justify-content:space-between;
 `
     const ContainerWeather = styled.div`
-        background-color: black;
+    background-color: rgba(0, 0, 0, 0.2); 
     `
 
     return (
-        
         <>
             <div className="Form">
                 <p>{instruction}</p>
@@ -160,6 +175,8 @@ const Form = () => {
             <ContainerWeather>
             {generalWeather && (
                     <InfoWeather 
+                        showBtn = {toggle}
+                        handle= {handleChange}
                         city= {query}
                         ressenti ={generalWeather.current.feels_like}
                         humidity ={generalWeather.daily[0].humidity}
@@ -172,6 +189,8 @@ const Form = () => {
             )}
             {weatherDay && (
                 <InfoWeatherDay
+                    toggle = {toggle}
+                    close ={closer}
                     dayOneImg ={weatherDay[1].weather[0].icon}
                     dayOneTemp= {weatherDay[1].temp.day}
                     dayOneMin ={weatherDay[1].temp.min}
