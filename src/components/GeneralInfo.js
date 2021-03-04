@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 
 function GeneralInformation(props) {
-    const Infoelementtitle = styled.div`
+const Infoelementtitle = styled.div`
     color: white;
     text-align:center;
     display:flex;
@@ -11,7 +11,6 @@ function GeneralInformation(props) {
     align-items: center;
     text-transform: uppercase;
     text-shadow : 1px 1px black;
-    margin-top: 150px;
 `
 const Img = styled.img`
     objectif-fit:contain;

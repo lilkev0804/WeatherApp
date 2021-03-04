@@ -5,12 +5,11 @@ export default function InfoWeatherDay(props) {
 
     const GeneralDayWeather = styled.div`
         widh:100%;
-        background-color: rgba(0, 0, 0, 0.2); 
+        background-color: black; 
         display: ${props.toggle ? "flex" : 'none'};
         flex-wrap: wrap;
         align-item:center;
         justify-content: space-around;
-        margin-top: 10px;
         position: relative;
         padding-top: 4rem;
     `

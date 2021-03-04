@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import {fechtWeatherSpe} from '../apisuper'
 import {fechtWeather} from '../api'
 import InfoWeather from './InfoWeather'
@@ -12,6 +12,7 @@ import'./Form.css'
 
 const Form = () => {
     const [query, setQuery] = useState('')
+    const [queryName, setQueryName] = useState('')
     const [lang, setLang] = useState('')
     const [generalWeather, setGeneralWeather] = useState('')
     const [weatherDay, setWeatherDay] = useState("")
@@ -26,22 +27,22 @@ const Form = () => {
     const BlockForm = document.querySelector('.Form')
 
     const search = async () => {
-
+        console.log('hello')
             const data = await fechtWeather(query, lang)
             setLat(data.coord.lat)
             setLong(data.coord.lon)
             const dataS = await fechtWeatherSpe(lat, long)
             setGeneralWeather(dataS)
-            setWeatherDay(dataS.daily)
             setImg(dataS.current.weather[0].icon)
             setBg(dataS.current.weather[0].icon)
-            setQuery(query)
+
             setLang('')
             setInstruction('Une nouvelle recherche ? ') 
             if(window.innerWidth < 918){
                 BlockForm.style.top = "0%"
                 BlockForm.style.transform = 'translateY(0)'
             }
+            setQueryName(query)
             
 
     }
@@ -110,8 +111,10 @@ const Form = () => {
             return lambda
         }
     }
-    const handleChange = () => {
+    const handleChange = async() => {
         setToggle(!toggle)
+        const dataS = await fechtWeatherSpe(lat, long)
+        setWeatherDay(dataS.daily)
          BlockForm.style.top = "0px"
             BlockForm.style.transform = "translateY(0px)"
     }
@@ -122,7 +125,7 @@ const Form = () => {
     
    const Back = styled.div`
         width:100%;
-        min-height:100vh;
+        height:100vh;
         background-image: url(${changeBackgound}) ;
         background-size: cover;
         background-repeat: no-repeat;
@@ -166,7 +169,7 @@ const Form = () => {
             
             {generalWeather && (
                     <GeneralInformation 
-                    city= {query}
+                    city= {queryName}
                     img = {img}
                     temp ={generalWeather.current.temp}
                     ></GeneralInformation>
