@@ -1,14 +1,26 @@
+.GeneralBox{
+    width:100%;
+    height:100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index:-100;
+    position:absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+}
 .Form{
     background-color: transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
-    padding-top: 10px;
+    /* padding-top: 10px;
     top:50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%); */
 }
 .Form p {
     color: #fff;

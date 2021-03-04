@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState} from 'react'
 import {fechtWeatherSpe} from '../apisuper'
 import {fechtWeather} from '../api'
 import InfoWeather from './InfoWeather'
@@ -123,26 +123,17 @@ const Form = () => {
     }
 
     
-   const Back = styled.div`
-        width:100%;
-        height:100vh;
-        background-image: url(${changeBackgound}) ;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-        z-index:-100;
-        position:absolute;
-        display: flex;
-        flex-direction: column;
-        justify-content:space-between;
-`
     const ContainerWeather = styled.div`
     background-color: rgba(0, 0, 0, 0.2); 
     `
 
     return (
-        <>
-            <div className="Form">
+        <div className="GeneralBox" style={{
+            backgroundImage: `url(${changeBackgound === " " ? "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" : changeBackgound()}) `
+        }}>
+
+   
+        <div className="Form">
                 <p>{instruction}</p>
                 <div className="FormInput">
                     <input 
@@ -165,8 +156,6 @@ const Form = () => {
                     </button>
                 </div>
             </div >
-        <Back>  
-            
             {generalWeather && (
                     <GeneralInformation 
                     city= {queryName}
@@ -225,9 +214,8 @@ const Form = () => {
                 ></InfoWeatherDay>
             )}
             </ContainerWeather>
-        </Back>
         
-        </>
+        </div>
     )
 }
 
