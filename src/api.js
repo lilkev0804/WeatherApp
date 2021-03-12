@@ -1,19 +1,15 @@
-import axios from 'axios'
+import axios from "axios";
 
-    const API_KEY = "5f54bb751d2405533b404aa32960cba9"
-    const URL = "https://api.openweathermap.org/data/2.5/weather?"
+const API_KEY = "2f68aa38c4714b228178841541b9c5ef";
+const URL = "https://api.opencagedata.com/geocode/v1/json?";
 
- export const fechtWeather = async (query ,lang) => {
-      const {data} = await axios.get(URL, {
-       params:{
-         q:`${query},${lang}`,
-         units: 'metric',
-         APPID : API_KEY
-       }
-    })
-    return data
-}
-
-
-
-
+export const fechtCity = async (query) => {
+  const { data } = await axios.get(URL, {
+    params: {
+      q: `${query}`,
+      key: API_KEY,
+      countrycode : "fr"
+    },
+  });
+  return data;
+};

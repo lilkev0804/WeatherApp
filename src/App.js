@@ -1,11 +1,12 @@
-import Form from './components/Form';
+import ContainerWeather from "./screens/ContainerWeather";
+
+
 
 function App() {
   return (
     <div className="App">
-     
-       <Form></Form>
-     
+    <ContainerWeather></ContainerWeather>
+      
     </div>
   );
 }

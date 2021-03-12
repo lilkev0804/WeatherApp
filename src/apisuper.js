@@ -9,7 +9,8 @@ import axios from 'axios'
       lat: `${lat}`,
       lon : `${long}`,
       units: 'metric',
-        APPID : API_KEY
+        APPID : API_KEY,
+        exclude: 'minutely'
        }
     })
     return data

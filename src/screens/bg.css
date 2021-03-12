@@ -1,0 +1,13 @@
+.myBg{
+    position: relative;
+}
+
+.Form{
+    position: absolute;
+    top: 40vh;
+    left: 50%;
+    z-index: 100;
+    transform: translateX(-50%) ;
+    height: 100px;
+    border: 1px solid red;
+}

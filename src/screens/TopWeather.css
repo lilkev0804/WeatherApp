@@ -1,0 +1,41 @@
+.TopWeather{
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(4, 5, 100, 0.493);
+}
+.Principal-info{
+    width: 300px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left:50px;
+}
+.logo-actual-weather{
+    width: 50px;
+    height: 50px;
+}
+.Precise-info{
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 40px;
+}    
+.logo-info-weather{
+    width: 30px;
+    height: 30px;
+    margin-right: 2vw;
+}
+.block-info-supp{
+    width: 100%;
+    display: flex;
+}
+.sub-info-supp p{
+    padding-top: 0;
+    margin-top: 0 !important;
+}
