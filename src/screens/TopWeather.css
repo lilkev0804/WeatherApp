@@ -4,7 +4,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(4, 5, 100, 0.493);
 }
 .Principal-info{
     width: 300px;
@@ -13,6 +12,7 @@
     flex-direction: column;
     justify-content: center;
     padding-left:50px;
+    background-color: rgba(0, 0, 0, 0.096);
 }
 .logo-actual-weather{
     width: 50px;
@@ -20,11 +20,13 @@
 }
 .Precise-info{
     height: 100%;
+    min-width: 400px;
     flex-direction: column;
     display: flex;
     align-items: center;
     justify-content: center;
     padding-right: 40px;
+    background-color: rgba(0, 0, 0, 0.096);
 }    
 .logo-info-weather{
     width: 30px;
@@ -32,7 +34,6 @@
     margin-right: 2vw;
 }
 .block-info-supp{
-    width: 100%;
     display: flex;
 }
 .sub-info-supp p{

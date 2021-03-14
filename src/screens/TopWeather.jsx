@@ -1,6 +1,6 @@
 import React from "react";
 import { infoWeatherEl } from "../components/infoWeatherEl";
-
+import {Link} from "react-router-dom"
 import "./TopWeather.css";
 export default function TopWeather(props) {
 
@@ -8,13 +8,13 @@ export default function TopWeather(props) {
 
   
   return (
-    <div className="TopWeather">
+    <div className="TopWeather" style={{display:`${props.visible}`}}>
       <div className="Principal-info">
         <img className="logo-actual-weather" src={`img/${props.icon}.svg`} alt="icone de la meteo"></img>
         <p>{props.description}</p>
         <p>{props.city}</p>
         <p>{props.temp} °C </p>
-        <p>Changer de ville</p>
+        <Link to="/">Changer de ville </Link>
       </div>
       <div className="Precise-info">
         {infoWeatherEl.map((info, index) => (

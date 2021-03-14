@@ -6,10 +6,10 @@ export default function BottomWeather(props) {
 
 
     return (
-        <div className="BottomWeather">
+        <div className="BottomWeather" style={{display:`${props.visible}`}}>
             <div className="slider-hourly">
             {props.element.map((hour, index) => (
-                <div className="hourlycard" style={{
+                <div key={index} className="hourlycard" style={{
                     display : `${index >= 24 ? 'none' : "block"}`
                 }}>
                     <p>h + {index + 1}</p>

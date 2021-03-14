@@ -12,7 +12,7 @@ export const infoWeatherEl =  [
         logo : 'pressure.svg',
     },
     {
-        name: 'Vitesse du vente',
+        name: 'Vitesse du vent',
         logo : 'wind.svg',
     }
 ]
