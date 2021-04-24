@@ -10,3 +10,5 @@ Consommation d'API OpenWeatherMap
 ## Techno 
 
 React JS / STYLED COMPONENTS
+
+![Screenshot](weatherapp.png)
