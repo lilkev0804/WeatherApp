@@ -1,4 +1,4 @@
-Weather APP
+# Weather APP
 
 Une application web permettant de connaitre la météo en temps réelle en choisissant un ville.
 
@@ -6,3 +6,7 @@ Une application web permettant de connaitre la météo en temps réelle en chois
 - Prévision sur 7 jour
 
 Consommation d'API OpenWeatherMap
+
+## Techno 
+
+React JS / STYLED COMPONENTS
