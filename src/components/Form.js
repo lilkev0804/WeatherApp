@@ -27,7 +27,6 @@ const Form = () => {
     const BlockForm = document.querySelector('.Form')
 
     const search = async () => {
-        console.log('hello')
             const data = await fechtWeather(query, lang)
             setLat(data.coord.lat)
             setLong(data.coord.lon)
