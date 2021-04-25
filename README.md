@@ -1,5 +1,8 @@
 # Weather APP
 
+Projet personnel 
+https://weather-app-kevinl.netlify.app/
+
 Une application web permettant de connaitre la météo en temps réelle en choisissant un ville.
 
 ![Screenshot](weatherapp.png)
